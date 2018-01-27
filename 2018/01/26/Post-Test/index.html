@@ -322,6 +322,12 @@
         
         
             
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
         
         <li class="post-action">
             
@@ -336,6 +342,8 @@
 
         
         
+            
+                <div id="gitment"></div>
             
         
     </div>
@@ -414,6 +422,12 @@
             </li>
         
         
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
             
         
         <li class="post-action">
@@ -514,6 +528,35 @@
 <script src="/hexo-blog/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
 <!--SCRIPTS END-->
 
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://yoursite.com/hexo-blog/2018/01/26/Post-Test/',
+                        owner: 'ffffuturexu',
+                        repo: 'hexo-blog',
+                        oauth: {
+                            client_id: 'aea227e729b19d223df8',
+                            client_secret: '025fcc6e1fcd2cc6e980d3d74fa280c04adb42fa',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//imsun.github.io/gitment/dist/gitment.browser.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
     
 
 
