@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="The Backyard of Sabbath">
 <meta property="og:description" content="自从我建完这个博客我就到大英开始我的博士生涯了，而这个博客也就一直被荒废到现在。现在我在伯恩茅斯的生活基本安定下来了，也是时候重新把博客捡起来了。定期写一些东西，让自己有一个稳定输出的习惯，可以磨练自己的逻辑思维能力。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-26T23:10:02.975Z">
+<meta property="og:updated_time" content="2018-03-02T09:28:29.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文献管理工具 Zotero 的同步设置">
 <meta name="twitter:description" content="自从我建完这个博客我就到大英开始我的博士生涯了，而这个博客也就一直被荒废到现在。现在我在伯恩茅斯的生活基本安定下来了，也是时候重新把博客捡起来了。定期写一些东西，让自己有一个稳定输出的习惯，可以磨练自己的逻辑思维能力。">
@@ -256,8 +256,29 @@
 <a id="more"></a>
 <p>这几天一直在折腾我的文献管理工具，几经波折，终于决定使用一个开源软件：<strong>Zotero</strong>。由于Zotero自带的云存储只有300M（虽然存储条目数据绰绰有余，但是面对众多文献pdf附件就只能两手一摊了）因此只能另外找地方来存储这些pdf。因为我个人钟爱各类微软产品，最后选择了Onedrive来作为存储附件的云空间。</p>
 <h4 id="1-设置-Zotero-首选项"><a href="#1-设置-Zotero-首选项" class="headerlink" title="1. 设置 Zotero 首选项"></a>1. 设置 Zotero 首选项</h4><ul>
-<li>切换至“同步”标签，取消勾选“文件同步”中的两个复选框。这一步的目的是不让附件自动同步到Zotero的云空间上。<br>*切换至“高级”标签，再切换至“文件和文件夹”子标签，在“链接附件的根目录”中选择一个文件夹。这个文件夹需要建在Onedrive（或其他云盘）文件夹里</li>
+<li>打开 编辑 - 首选项 ，切换至 同步 标签，取消勾选 文件同步 中的两个复选框。这一步的目的是不让附件自动同步到Zotero的云空间上。</li>
+<li>打开 编辑 - 首选项 ，切换至 高级 标签，再切换至 文件和文件夹 子标签，在 链接附件的根目录 中选择一个文件夹。这个文件夹需要建在Onedrive（或其他云盘）文件夹里，用来存储pdf文件。比如：<code>C:\Users\xxx\OneDrive\My Zotero\My Reference</code></li>
 </ul>
+<h4 id="2-设置-storage-文件夹"><a href="#2-设置-storage-文件夹" class="headerlink" title="2. 设置 storage 文件夹"></a>2. 设置 storage 文件夹</h4><p>由于Zotero默认的附件都保存在storage文件夹中，我们可以在Onedrive文件夹中建一个storage文件夹，然后将Zotero下的storage文件夹链接到Onedrive下的storage文件夹。这样每添加一个pdf，附件实际上存到了Onedrive的storage里。具体做法如下：</p>
+<ul>
+<li>将C:\Users\xxx\Zotero\storage中的storage文件夹剪切（剪切前请先备份storage文件夹）到<code>C:\Users\xxx\OneDrive\My Zotero</code>中。</li>
+<li>用管理员身份运行cmd，输入以下命令，一定要在路径上加上引号。<br><code>Mklink /j &quot;C:\Users\xxx\Zotero\storage&quot; &quot;C:\Users\xxx\OneDrive\My Zotero\storage&quot;</code></li>
+</ul>
+<h4 id="3-设置-ZotFile-首选项"><a href="#3-设置-ZotFile-首选项" class="headerlink" title="3. 设置 ZotFile 首选项"></a>3. 设置 ZotFile 首选项</h4><p>ZotFile是一个Zotero的附件管理插件。由于Zotero默认保存附件的机制是：每添加一个附件，就在storage文件夹中自动随机生成一串字母数字作为文件夹名，然后将pdf附件保存在该文件夹中。这样的后果就是我们无法方便地对附件归类，并且不方便搜寻特定的附件。ZotFile可按照特定规则自动修改文件名，并可按照分类规则自动创建文件夹，将符合该规则的附件放在同一个文件夹下。插件安装可移步<a href="http://zotfile.com/" target="_blank" rel="noopener">官网</a>。<br>假设ZotFile安装完成，按照下列步骤设置ZotFile</p>
+<ul>
+<li>打开 工具 - ZotFile Preference ，切换至 General Setting 标签，在 Source Folder 一栏中选择<code>C:\Users\xxx\OneDrive\My Zotero\storage&quot;</code>。</li>
+<li>在Custom Location中选择<code>C:\Users\xxx\OneDrive\My Zotero\My Reference</code>。</li>
+<li>在 Use subfolder defined by 框中填上 /%F，这表示pdf将会按照作者-年份-标题重命名，并按照作者自动创建子文件夹分类。更多分类规则移步<a href="http://zotfile.com/" target="_blank" rel="noopener">官网</a>。</li>
+</ul>
+<h4 id="4-在chrome上安装Zotero-Connector"><a href="#4-在chrome上安装Zotero-Connector" class="headerlink" title="4. 在chrome上安装Zotero Connector"></a>4. 在chrome上安装Zotero Connector</h4><ul>
+<li>进入<a href="https://www.zotero.org/download/" target="_blank" rel="noopener">Zotero官网</a>下载Connector，其实就是一个扩展程序，安装完毕即可。</li>
+</ul>
+<h4 id="5-如何使用"><a href="#5-如何使用" class="headerlink" title="5. 如何使用"></a>5. 如何使用</h4><ul>
+<li>当你在想下载一篇优秀文献时，看一下chrome右上角的Zotero Connector，如果是一个文件标志，就代表可以自动生成条目，自动下载pdf并按照设置对pdf分类。也就是说只需要按一下，Zotero就可以帮你把所有事情都做完。</li>
+<li>如果是一个pdf标志，就代表Zotero只能下载这篇pdf，但不能自动生成条目和归类。这时也先点一下，把pdf下载到Zotero里。然后在Zotero里找到这个pdf，右键“根据元数据生成条目”，就可以生成条目了。然后再右键附件pdf，选择Manage Attachments - Rename Attachments，点击之后就可以完成重命名和分类的工作。</li>
+</ul>
+<p>至此Zotero的设置基本完成，可以尽情在<del>论文的海洋里遨游了啊哈哈</del>。</p>
+<p><strong>后记</strong> - 这篇教程写了我好几天，主要是因为太久没写东西，于是写得很慢，其次对markdown语法不熟悉。以后得勤写，保证输出。</p>
 
             
 
