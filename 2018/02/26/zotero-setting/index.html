@@ -59,7 +59,7 @@
 <header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
-        <a class="header-title-link" href="/hexo-blog/%20">The Backyard of Sabbath</a>
+        <a class="header-title-link" href="/hexo-blog/">The Backyard of Sabbath</a>
     </div>
     
         
@@ -100,7 +100,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/hexo-blog/%20"
+                             href="/hexo-blog/"
                             
                             title="Home"
                         >
@@ -190,6 +190,15 @@
                     
                         <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.facebook.com/weilaixu.david" target="_blank" rel="noopener" title="Facebook">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
                     </a>
             </li>
             
@@ -359,12 +368,6 @@
         
         
             
-                <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitment">
-                         <i class="fa fa-comment-o"></i>
-                    </a>
-                </li>
-            
         
         <li class="post-action">
             
@@ -380,9 +383,67 @@
         
         
             
-                <div id="gitment"></div>
+                
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'whzN4X8JtRuM7HMWUV5kD5Xk-MdYXbMMI',
+        app_key: 'syW1BJoVbzJOBscYXLhOdh1c',
+        path: window.location.pathname,
+		meta: ['nick','mail'],
+        avatar: 'mp',
+        placeholder: 'Your Comments are Welcome~',
+        recordIP: true,
+        visitor: 'true'
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+	
+	.v[data-class=v] .vwrap {
+		overflow: initial;
+	}
+
+    .v[data-class=v] .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v[data-class=v] .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
             
         
+		<span id=  class="leancloud_visitors" data-flag-title="Your Article Title">
+			<em class="post-meta-item-text">阅读量 </em>
+			<i class="leancloud-visitors-count"></i>
+		</span>
     </div>
 </article>
 
@@ -390,7 +451,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2020 Weilai Xu. All Rights Reserved.
+        Copyrights &copy; 2018-2020 Weilai Xu. All Rights Reserved.
     </span>
 </footer>
 
@@ -459,12 +520,6 @@
             </li>
         
         
-            
-                <li class="post-action">
-                    <a class="post-action-btn btn btn--default" href="#gitment">
-                         <i class="fa fa-comment-o"></i>
-                    </a>
-                </li>
             
         
         <li class="post-action">
@@ -567,35 +622,6 @@
 
 <!--SCRIPTS END-->
 
-    
-        <script type="text/javascript">
-            (function() {
-                function render() {
-                    new Gitment({
-                        id: 'Mon Feb 26 2018 14:22:04 GMT+0000',
-                        owner: 'ffffuturexu',
-                        repo: 'hexo-blog',
-                        oauth: {
-                            client_id: 'aea227e729b19d223df8',
-                            client_secret: '025fcc6e1fcd2cc6e980d3d74fa280c04adb42fa',
-                        }
-                    }).render('gitment');
-                }
-                var gc = document.createElement('script');
-                gc.type = 'text/javascript';
-                gc.src = '//imsun.github.io/gitment/dist/gitment.browser.js';
-                gc.charset = 'UTF-8';
-                gc.onload = render;
-                gc.async = true;
-                document.querySelector('body').appendChild(gc);
-                var gcs = document.createElement('link');
-                gcs.href = '//imsun.github.io/gitment/style/default.css';
-                gcs.type = 'text/css';
-                gcs.rel = 'stylesheet';
-                gcs.media = 'screen,print';
-                document.querySelector('head').appendChild(gcs);
-            })();
-	    </script>
     
 
 
