@@ -1,0 +1,25 @@
+.qr-donate {
+    text-align: center;
+    margin: 5px 0;
+  }
+  .qr-donate h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  .donation-qr {
+    display: flex;
+    justify-content: center;
+  }
+  .donate-item {
+    padding: 0 20px;
+  }
+  .donate-item img {
+    width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  .donate-item p {
+    margin-top: 5px;
+    font-size: 0.8em;
+  }
+  
