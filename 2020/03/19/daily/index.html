@@ -287,6 +287,34 @@ var _hmt = _hmt || [];
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
+        <div class="post-copyright">
+  <div class="post-copyright-author">
+    <strong>文章作者：</strong>Future Xu
+  </div>
+  <div class="post-copyright-link">
+    <strong>文章链接：</strong><a href="/2020/03/19/daily/">https://futurexu.top/2020/03/19/daily/</a>
+  </div>
+  <div class="post-copyright-license">
+    <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处！
+  </div>
+</div>
+
+<style>
+.declare {
+  background-color: #eaeaea;
+  margin-top: 2em;
+  border-left: 3px solid #ff1700;
+  padding: .5em 1em;
+}
+
+.post-copyright {
+  padding: 1em;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  margin: 1.5em 0;
+}
+</style>
         
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
@@ -454,6 +482,77 @@ var _hmt = _hmt || [];
         <!-- <span id="/2020/03/19/daily/" class="leancloud_visitors" data-flag-title="2020.3.19 阴">
             <i class="leancloud-visitors-count"></i>人看过
         </span> -->
+        <!-- 在文章内容区域底部添加 -->
+        
+            <script>
+            (function() {
+                'use strict';
+                
+                function setClipboardText(event) {
+                    var clipboardData = event.clipboardData || window.clipboardData;
+                    if (!clipboardData) return;
+                    
+                    var selectedText = window.getSelection().toString().trim();
+                    if (!selectedText) return;
+                    
+                    event.preventDefault();
+                    
+                    var copyright = '\n\n————————————————'
+                        + '\n著作权归作者所有。'
+                        + '\n商业转载请联系作者获得授权，非商业转载请注明出处。'
+                        + '\n作者: ' + 'Future Xu'
+                        + '\n原文地址: ' + window.location.href;
+                    
+                    clipboardData.setData('text/plain', selectedText + copyright);
+                    
+                    // 调试信息
+                    console.log('复制保护已生效，已添加版权信息');
+                }
+                
+                // 多个可能的内容选择器
+                var contentSelectors = [
+                    '.post-body',        // Next主题
+                    '.article-content',  // Yilia主题  
+                    '.post-content',     // Landscape主题
+                    '.content',          // 通用选择器
+                    '.entry-content',    // 其他主题
+                    'article',           // HTML5语义标签
+                    '.post',             // 通用文章容器
+                    'main'               // 主内容区域
+                ];
+                
+                function initCopyProtection() {
+                    var contentElement = null;
+                    
+                    // 按优先级查找内容容器
+                    for (var i = 0; i < contentSelectors.length; i++) {
+                        contentElement = document.querySelector(contentSelectors[i]);
+                        if (contentElement) {
+                            console.log('找到内容容器：', contentSelectors[i]);
+                            break;
+                        }
+                    }
+                    
+                    if (contentElement) {
+                        contentElement.addEventListener('copy', setClipboardText);
+                        console.log('复制保护已启用');
+                    } else {
+                        // 如果找不到特定容器，在document上监听
+                        document.addEventListener('copy', setClipboardText);
+                        console.log('在全局启用复制保护');
+                    }
+                }
+                
+                // 确保DOM完全加载后执行
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', initCopyProtection);
+                } else {
+                    // DOM已经加载完成
+                    initCopyProtection();
+                }
+            })();
+            </script>
+        
     </div>
 </article>
 
