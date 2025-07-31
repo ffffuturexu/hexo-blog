@@ -504,8 +504,7 @@ var _hmt = _hmt || [];
         
             <script>
             (function() {
-                'use strict';
-                
+                'use strict';             
                 function setClipboardText(event) {
                     var clipboardData = event.clipboardData || window.clipboardData;
                     if (!clipboardData) return;
@@ -540,8 +539,7 @@ var _hmt = _hmt || [];
                 ];
                 
                 function initCopyProtection() {
-                    var contentElement = null;
-                    
+                    var contentElement = null;                   
                     // 按优先级查找内容容器
                     for (var i = 0; i < contentSelectors.length; i++) {
                         contentElement = document.querySelector(contentSelectors[i]);
@@ -549,8 +547,7 @@ var _hmt = _hmt || [];
                             console.log('找到内容容器：', contentSelectors[i]);
                             break;
                         }
-                    }
-                    
+                    }               
                     if (contentElement) {
                         contentElement.addEventListener('copy', setClipboardText);
                         console.log('复制保护已启用');
@@ -560,7 +557,6 @@ var _hmt = _hmt || [];
                         console.log('在全局启用复制保护');
                     }
                 }
-                
                 // 确保DOM完全加载后执行
                 if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', initCopyProtection);
